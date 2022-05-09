@@ -13,7 +13,7 @@
     <table class ="table table-bordered">
         <thead>
             <tr>
-                <th>País</th>
+                <th style="color:red">País</th>
                 <th>Capital</th>
                 <th>Moneda</th>
                 <th>Población</th>
@@ -23,7 +23,7 @@
         <tbody>
             @foreach($paises as $pais => $infopais)
                 <tr>
-                    <td rowspan="{{ count($infopais['ciu']) }}">{{ $pais }}</td>
+                    <td style="color:red" rowspan="{{ count($infopais['ciu']) }}">{{ $pais }}</td>
                     <td rowspan="{{ count($infopais['ciu']) }}">{{ $infopais["Cap"] }}</td>
                     <td rowspan="{{ count($infopais['ciu']) }}">{{ $infopais["mon"] }}</td>
                     <td rowspan="{{ count($infopais['ciu']) }}">{{ $infopais["pob"] }}
