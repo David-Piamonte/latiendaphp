@@ -2,7 +2,8 @@
 
 @section('contenido')
 
-    <form class="col s8">
+    <form class="col s8" method="POST" action="{{ route('productos.store')}}">
+      @csrf
         <div class="row">
             <div class="col s8">
                 <h1 class="blue-text text-darken-2">
@@ -15,16 +16,18 @@
           <input placeholder="Nombre del Producto" 
           id="Nombre" 
           type="text" 
-          class="validate">
+          class="validate"
+          name="nombre">
           <label for="Nombre">
               Nombre de Productos
             </label>
         </div>
       <div class="row">
         <div class="input-field col s8">
-          <input id="desc" 
+          <input id="disc" 
           type="text" 
-          class="validate">
+          class="validate"
+          name="disc">
           <label for="disc">Descripción</label>
         </div>
       </div>
@@ -32,8 +35,9 @@
         <div class="input-field col s8">
           <input id="precio" 
           type="number" 
-          class="validate">
-          <label for="Precio">Precio</label>
+          class="validate"
+          name="precio">
+          <label for="precio">Precio</label>
         </div>
       </div>
       <div class="row">
@@ -43,7 +47,23 @@
               Elija su marca
             </option>
             @foreach($marcas as $marca)
-            <option>{{ $marca->nombre }}</option>
+            <option value="{{$marca->id }}">
+              {{ $marca->nombre }}
+            </option>
+            @endforeach
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s8 input-field">
+          <select name="categoria" id="categoria">
+            <option>
+              Elija su categoria
+            </option>
+            @foreach($categorias as $categoria)
+            <option  value="{{$categoria->id }}">
+              {{ $categoria->nombre }}
+            </option>
             @endforeach
           </select>
         </div>
@@ -62,7 +82,9 @@
       </div>
       <div class="row">
         <div class="col s12">
-        <a class="waves-effect waves-light btn">Guardar</a>
+        <button class="btn waves-effect waves-light" type="submit">Guardar
+        
+         </button>
           </div>
         </div>
     </form>
